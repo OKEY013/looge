@@ -1,0 +1,43 @@
+{
+  "name": "looge-h5-app",
+  "version": "1.0.0",
+  "description": "Looge H5 Group Buying Lottery Platform - Complete Vue.js SPA and Node.js backend solution",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:backend\" \"npm run dev:frontend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && npm run start:env",
+    "build": "cd frontend && npm run build",
+    "install:all": "npm install && cd frontend && npm install && cd ../backend && npm install",
+    "test": "cd frontend && npm run test && cd ../backend && npm run test",
+    "start": "npm run dev",
+    "postinstall": "npm run install:all"
+  },
+  "keywords": [
+    "group-buying",
+    "lottery",
+    "h5-app",
+    "vue",
+    "nodejs",
+    "mysql",
+    "lottery-platform",
+    "affiliate-system"
+  ],
+  "author": "OKEY013",
+  "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=8.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OKEY013/looge.git"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.0"
+  },
+  "directories": {
+    "frontend": "./frontend",
+    "backend": "./backend",
+    "database": "./database"
+  }
+}
