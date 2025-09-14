@@ -1,0 +1,24 @@
+Backend server running on port 3001
+自动开奖异常: Error
+    at Database.<anonymous> (/www/wwwroot/Looge-h5-app/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:185:27)
+    at /www/wwwroot/Looge-h5-app/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:50
+    at new Promise (<anonymous>)
+    at Query.run (/www/wwwroot/Looge-h5-app/backend/node_modules/sequelize/lib/dialects/sqlite/query.js:183:12)
+    at /www/wwwroot/Looge-h5-app/backend/node_modules/sequelize/lib/sequelize.js:315:28
+    at async SQLiteQueryInterface.select (/www/wwwroot/Looge-h5-app/backend/node_modules/sequelize/lib/dialects/abstract/query-interface.js:407:12)
+    at async group.findAll (/www/wwwroot/Looge-h5-app/backend/node_modules/sequelize/lib/model.js:1140:21)
+    at async autoDraw (/www/wwwroot/Looge-h5-app/backend/src/services/autoDraw.js:11:18) {
+  name: 'SequelizeDatabaseError',
+  parent: [Error: SQLITE_ERROR: no such table: group] {
+    errno: 1,
+    code: 'SQLITE_ERROR',
+    sql: "SELECT `id`, `name`, `product_id`, `open_time`, `group_count`, `status`, `created_at` FROM `group` AS `group` WHERE `group`.`status` = '进行中' AND `group`.`draw_time` <= '2025-09-01 20:54:52.593 +00:00';"
+  },
+  original: [Error: SQLITE_ERROR: no such table: group] {
+    errno: 1,
+    code: 'SQLITE_ERROR',
+    sql: "SELECT `id`, `name`, `product_id`, `open_time`, `group_count`, `status`, `created_at` FROM `group` AS `group` WHERE `group`.`status` = '进行中' AND `group`.`draw_time` <= '2025-09-01 20:54:52.593 +00:00';"
+  },
+  sql: "SELECT `id`, `name`, `product_id`, `open_time`, `group_count`, `status`, `created_at` FROM `group` AS `group` WHERE `group`.`status` = '进行中' AND `group`.`draw_time` <= '2025-09-01 20:54:52.593 +00:00';",
+  parameters: {}
+}

@@ -1,0 +1,34 @@
+{
+  "name": "looge-h5-app",
+  "version": "1.0.0",
+  "description": "A mobile lucky group buying H5 application.",
+  "main": "src/App.tsx",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-scripts": "4.0.3",
+    "redux": "^4.1.0",
+    "react-redux": "^7.2.6",
+    "react-router-dom": "^5.3.0",
+    "axios": "^0.21.1"
+  },
+  "devDependencies": {
+    "typescript": "^4.1.3",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.2"
+  },
+  "keywords": [
+    "group buying",
+    "lottery",
+    "mobile app",
+    "H5"
+  ],
+  "author": "Your Name",
+  "license": "MIT"
+}

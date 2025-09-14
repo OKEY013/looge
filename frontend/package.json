@@ -1,0 +1,21 @@
+{
+  "name": "looge-h5-frontend",
+  "version": "1.0.0",
+  "description": "Looge H5 用户端与管理员端前端项目",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview"
+  },
+  "dependencies": {
+    "axios": "^1.11.0",
+    "qrcode": "^1.5.4",
+    "vue": "^3.4.0",
+    "vue-i18n": "^9.2.0",
+    "vue-router": "^4.2.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "vite": "^4.0.0"
+  }
+}
