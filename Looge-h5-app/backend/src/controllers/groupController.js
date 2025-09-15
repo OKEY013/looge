@@ -13,9 +13,9 @@ exports.list = async (req, res) => {
 
 // 用户参与拼团
 exports.join = async (req, res) => {
-  logger.action(`用户${userId}参与拼团${groupId}`);
   const userId = req.user.id;
   const { groupId } = req.body;
+  logger.action(`用户${userId}参与拼团${groupId}`);
   const group = await Group.findByPk(groupId);
   if (!group) return res.status(404).json({ error: '拼团不存在' });
   const user = await User.findByPk(userId);
