@@ -136,7 +136,7 @@
 import { ref, onMounted, computed } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import api from '../api/index.js'
+import api from '../../api/index.js'
 
 const router = useRouter()
 const { t } = useI18n()
