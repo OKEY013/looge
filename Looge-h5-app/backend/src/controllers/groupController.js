@@ -70,11 +70,12 @@ exports.join = async (req, res) => {
       let inviterId = user.inviter_id;
       let rebateLevels = [team?.rebate_level1, team?.rebate_level2, team?.rebate_level3];
       for (let i = 0; i < 3 && inviterId; i++) {
-            popupMissDetails.push({ type: `推荐返利${i+1}级`, name: inviter.nickname || inviter.account, tail: String(inviter.account).slice(-4), amount: rebateAmount, reason: '非VIP' });
+        let rebate = rebateLevels[i];
         if (rebate && rebate > 0) {
           const inviter = await User.findByPk(inviterId);
           if (inviter) {
             const rebateAmount = +(amount * rebate / 100).toFixed(2);
+            popupMissDetails.push({ type: `推荐返利${i+1}级`, name: inviter.nickname || inviter.account, tail: String(inviter.account).slice(-4), amount: rebateAmount, reason: '非VIP' });
             inviter.balance += rebateAmount;
             await inviter.save();
             await Finance.create({ user_id: inviter.id, type: `推荐返利${i+1}级`, amount: rebateAmount, status: '已发放' });
