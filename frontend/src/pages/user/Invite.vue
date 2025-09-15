@@ -116,7 +116,7 @@
 import { ref, onMounted } from 'vue'
 import { useRouter } from 'vue-router'
 import { useI18n } from 'vue-i18n'
-import api from '../api/index.js'
+import api from '../../api/index.js'
 import QRCode from 'qrcode'
 
 const router = useRouter()
