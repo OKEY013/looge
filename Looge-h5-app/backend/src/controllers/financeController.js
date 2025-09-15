@@ -71,8 +71,8 @@ exports.bonus = async (req, res) => {
 
 // 管理员删除财务记录
 exports.delete = async (req, res) => {
-  logger.action(`管理员删除财务记录${id}`);
   const { id } = req.body;
+  logger.action(`管理员删除财务记录${id}`);
   const record = await Finance.findByPk(id);
   if (!record) return res.status(404).json({ error: '记录不存在' });
   await record.destroy();
