@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
   { path: '/', name: 'Home', component: () => import('../pages/Home.vue') },
@@ -10,10 +10,12 @@ const routes = [
   { path: '/message', name: 'Message', component: () => import('../pages/Message.vue') },
   { path: '/vip', name: 'VIP', component: () => import('../pages/VIP.vue') },
   { path: '/admin', name: 'Admin', component: () => import('../pages/Admin.vue') },
+  { path: '/wallet', name: 'Wallet', component: () => import('../pages/Wallet.vue') },
+  { path: '/invite', name: 'Invite', component: () => import('../pages/Invite.vue') },
 ];
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes,
 });
 

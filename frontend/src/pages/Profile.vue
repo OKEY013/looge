@@ -3,18 +3,38 @@
     <h2>{{ t('profile') }}</h2>
 
     <div class="user-info">
-      <p>{{ t('nickname') }}：{{ user.nickname }}</p>
-      <p>{{ t('inviteCode') }}：{{ user.inviteCode }}</p>
-      <p>{{ t('inviteCount') }}：{{ user.inviteCount }}</p>
-      <p>{{ t('teamCount') }}：{{ user.teamCount }}</p>
-      <p>{{ t('balance') }}：{{ user.balance }} USDT</p>
-      <p>
-        {{ t('vip') }}{{ t('status') }}：
-        <span :style="{ color: user.isVip ? 'green' : 'red' }">
-          {{ user.isVip ? t('vipMember') : t('normalUser') }}
-        </span>
-        <button v-if="!user.isVip" @click="goToVip" class="vip-btn">{{ t('buyVip') }}</button>
-      </p>
+      <div class="avatar-section">
+        <div class="avatar">👤</div>
+        <div class="user-details">
+          <h3>{{ user.nickname || '用户' }}</h3>
+          <p class="user-id">ID: {{ user.id }}</p>
+        </div>
+      </div>
+      
+      <div class="balance-section">
+        <div class="balance-item">
+          <span class="label">{{ t('balance') }}</span>
+          <span class="value">¥{{ (user.balance || 0).toFixed(2) }}</span>
+        </div>
+        <div class="balance-item">
+          <span class="label">VIP状态</span>
+          <span class="value" :class="{ vip: user.isVip }">
+            {{ user.isVip ? 'VIP会员' : '普通用户' }}
+          </span>
+        </div>
+      </div>
+
+      <div class="quick-actions">
+        <button @click="goToWallet" class="action-btn wallet-btn">
+          💰 {{ t('wallet') }}
+        </button>
+        <button @click="goToInvite" class="action-btn invite-btn">
+          👥 {{ t('invite') }}
+        </button>
+        <button v-if="!user.isVip" @click="goToVip" class="action-btn vip-btn">
+          👑 升级VIP
+        </button>
+      </div>
     </div>
 
     <div class="tabs">
@@ -96,9 +116,11 @@ const prizes = ref([
   { id: 2, name: '现金红包', status: '已回收' },
 ])
 
-function withdraw() { alert(t('withdrawComing')) }
-function recharge() { alert(t('rechargeComing')) }
+function withdraw() { router.push('/wallet') }
+function recharge() { router.push('/wallet') }
 function goToVip() { router.push('/vip') }
+function goToWallet() { router.push('/wallet') }
+function goToInvite() { router.push('/invite') }
 
 function vipAction() {
   if (!user.value.isVip) {
@@ -115,12 +137,146 @@ function vipAction() {
 </script>
 
 <style scoped>
-.profile-container { max-width: 600px; margin: 2rem auto; padding: 2rem; border: 1px solid #eee; border-radius: 8px; background: #fff }
-.user-info p { margin: 0.5rem 0 }
-.tabs { display:flex; gap:1rem; margin:1rem 0 }
-.tabs button { padding:0.5rem 1rem; border:none; border-radius:4px; background:#eee; cursor:pointer }
-.tabs button.active { background:#2196f3; color:#fff }
-.tab-content { margin-top:1rem }
-.vip-btn { margin-left: 1rem; padding: 0.3rem 1rem; background: gold; color: #333; border: none; border-radius: 4px; cursor: pointer; font-weight: bold }
-.vip-btn:hover { background: orange }
+.profile-container { 
+  max-width: 600px; 
+  margin: 2rem auto; 
+  padding: 2rem; 
+  border: 1px solid #eee; 
+  border-radius: 8px; 
+  background: #fff;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.user-info {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+}
+
+.avatar-section {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #667eea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+}
+
+.user-details h3 {
+  margin: 0;
+  color: #333;
+}
+
+.user-id {
+  margin: 5px 0 0 0;
+  font-size: 12px;
+  color: #999;
+}
+
+.balance-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.balance-item {
+  text-align: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.balance-item .label {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.balance-item .value {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.balance-item .value.vip {
+  color: #FFD700;
+}
+
+.quick-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.action-btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.wallet-btn {
+  background: #4CAF50;
+  color: white;
+}
+
+.invite-btn {
+  background: #2196F3;
+  color: white;
+}
+
+.vip-btn {
+  background: #FFD700;
+  color: #333;
+}
+
+.tabs { 
+  display: flex; 
+  gap: 1rem; 
+  margin: 1rem 0;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.tabs button { 
+  padding: 0.5rem 1rem; 
+  border: none; 
+  border-radius: 6px; 
+  background: #eee; 
+  cursor: pointer;
+  flex: 1;
+  transition: all 0.3s ease;
+}
+
+.tabs button.active { 
+  background: #667eea; 
+  color: #fff;
+}
+
+.tab-content { 
+  margin-top: 1rem;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  padding: 20px;
+  backdrop-filter: blur(10px);
+}
 </style>
