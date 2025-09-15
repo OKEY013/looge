@@ -59,8 +59,8 @@ exports.withdraw = async (req, res) => {
 
 // 分红发放（团队分红/推荐返利，管理员接口，简化为直接发放）
 exports.bonus = async (req, res) => {
-  logger.action(`管理员发放分红/返利给用户${userId}，金额${amount}`);
   const { userId, amount, type } = req.body;
+  logger.action(`管理员发放分红/返利给用户${userId}，金额${amount}`);
   const user = await User.findByPk(userId);
   if (!user) return res.status(404).json({ error: '用户不存在' });
   user.balance += amount;
