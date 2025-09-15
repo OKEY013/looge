@@ -1,7 +1,11 @@
 import { createRouter, createWebHistory } from 'vue-router';
 
 const routes = [
-  { path: '/', name: 'Home', component: () => import('../pages/Home.vue') },
+  { path: '/', name: 'LanguageSelect', component: () => import('../pages/LanguageSelect.vue') },
+  { path: '/language-select', name: 'LanguageSelectPage', component: () => import('../pages/LanguageSelect.vue') },
+  { path: '/login-register', name: 'LoginRegister', component: () => import('../pages/LoginRegister.vue') },
+  { path: '/admin-login', name: 'AdminLogin', component: () => import('../pages/AdminLogin.vue') },
+  { path: '/home', name: 'Home', component: () => import('../pages/Home.vue') },
   { path: '/login', name: 'Login', component: () => import('../pages/Login.vue') },
   { path: '/register', name: 'Register', component: () => import('../pages/Register.vue') },
   { path: '/group', name: 'GroupPurchase', component: () => import('../pages/GroupPurchase.vue') },
