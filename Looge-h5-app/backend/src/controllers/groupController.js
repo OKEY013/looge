@@ -93,6 +93,7 @@ exports.join = async (req, res) => {
     if (popupMissDetails.length > 0) {
   logger.info(`用户${userId}错过分红返利：${JSON.stringify(popupMissDetails)}`);
   logger.info(`拼团${groupId}未中奖，用户${userId}退款`);
+      const teamMemberTail = String(user.account).slice(-4);
       return res.json({ success: true, result: '中奖', prize: amount * 2, popupMiss: popupMissDetails, teamMemberTail });
     }
   }
