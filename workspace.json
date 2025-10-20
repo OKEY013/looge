@@ -1,0 +1,5 @@
+{
+  "name": "postgresql-migration-workspace",
+  "version": "2.0.0",
+  "description": "Project workspace configuration for PostgreSQL migration"
+}
